@@ -7,7 +7,7 @@ const { auth } = require('./middleware/auth');
 const { User } = require("./models/User");
 
 // application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({ extended:true }));
 
 // application/json
 app.use(bodyParser.json());
@@ -22,7 +22,7 @@ mongoose.connect(config.mongoURI, {
 
 app.get('/', (req, res) => {res.send('Hello World! 하위하위')})
 
-app.post('/register', (req, res) => {
+app.post('/api/users/register', (req, res) => {
   // 회원가입 때 필요한 정보들을 client에서 가져오면
   // 그것들을 데이터베이스에 넣어준다
 
@@ -98,9 +98,8 @@ app.get('/api/users/logout', auth, (req, res) =>{
 app.get('/api/hello', (req, res) => res.send('하위'))
 
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
-
+//app.listen(port, () => {
+//  console.log(`Example app listening at http://localhost:${port}`)
+//})
 
 const port = 5000
